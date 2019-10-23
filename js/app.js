@@ -389,31 +389,42 @@
     const cx = 65;
     const cy = 65;
     var r = 46; 
-    const bonusRadius = 10;
-    r = r + bonusRadius;
     const textWidth = 40;
     const textHeight = 20;
 
-    var dirs = ["north", "south", "east", "forbidden one we don't talk about", "west"]
+    var dirs = ["north", "south", "a long one, but like\ni mean a really long one,\nlonger than u expect", "forbidden one we don't talk about", "west"]
     var spacing_angle = 2*Math.PI / dirs.length;
     const spacingAngleDegrees = 360 / dirs.length;
 
     var svg = document.getElementById('compass-svg'); //Get svg element
 
     for (var i = 0; i < dirs.length; i++) {
-      const text_x = cx + r * Math.cos(spacing_angle * i);
-      const text_y = cy + r * Math.sin(spacing_angle * i);
+      const dir = dirs[i];
+      const lines = dirs[i].split("\n");
+
+    
+      const text_x = cx + (r + 5 + lines.length * 6) * Math.cos(spacing_angle * i);
+      const text_y = cy + (r + 5 + lines.length * 6) * Math.sin(spacing_angle * i);
+
 
       var textNode = document.createElementNS("http://www.w3.org/2000/svg", 'text'); 
-      textNode.setAttribute("x",text_x); 
+      //textNode.setAttribute("x",text_x); 
       textNode.setAttribute("y",text_y); 
-      textNode.setAttribute("font-size","10"); 
-      //textNode.setAttribute("textLength","3em"); 
+      textNode.setAttribute("font-size","6"); 
+      //textNode.setAttribute("textLength","300"); 
       //textNode.setAttribute("lengthAdjust","spacingAndGlyphs"); 
       textNode.setAttribute("text-anchor","middle"); 
       textNode.setAttribute("fill","white"); 
       textNode.setAttribute("transform",`rotate(${(spacingAngleDegrees * i) + 90}, ${text_x}, ${text_y})`);
-      textNode.textContent = dirs[i];
+
+
+      for (const line of lines){
+        var tspan = document.createElementNS("http://www.w3.org/2000/svg", 'tspan'); 
+        tspan.setAttribute("x", text_x)
+        tspan.setAttribute("dy", 6)
+        tspan.textContent = line;
+        textNode.appendChild(tspan)
+      }
 
       svg.appendChild(textNode);
 
