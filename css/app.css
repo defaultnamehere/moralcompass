@@ -88,10 +88,19 @@ header {
 
 
 
+#compass-svg {
+    overflow: visible;
+}
+
+#boing {
+    visibility: hidden;
+    position: relative;
+    text-align: center;
+}
 
 
 .compass {
-  /*position: relative;*/
+  position: relative;
   width: 100%;
   height: 100%;
   margin: 0 auto;
@@ -115,9 +124,6 @@ header {
     height: 100%;
     width: 100%;
   }
-
-
-
 
 
 .btn {
