@@ -31,11 +31,9 @@
   <header>
     <h1>Blakey Boy's Moral Compass</h1>
   </header>
-
-
+  <h5 id="boing">bbbboing! Moral North is that-a-way, Blakey Boy!</h3>
 
   <div class="container">
-  <h5 id="boing">bbbboing! Moral North is that-a-way, Blakey Boy!</h3>
     <div class="compass">
 
       <div id="rose" class="compass__rose">
@@ -43,10 +41,6 @@
         <svg id="compass-svg" class="compass__rose__dial" viewBox="0 0 130 130" version="1.1" xmlns="http://www.w3.org/2000/svg">
 
           <circle cx="65" cy="65" r="46" stroke="white" stroke-width="1" fill="none" />
-          <polyline points="63,9  67,9  65,13" fill="white"/>
-          <polyline points="121,63  121,67  119,65" fill="white"/>
-          <polyline points="63,121  67,121  65,119" fill="white"/>
-          <polyline points="9,63  9,67  11,65" fill="white"/>
 
 
         </svg>
@@ -55,7 +49,7 @@
 
       <svg class="compass__pointer" viewBox="0 0 130 130" version="1.1" xmlns="http://www.w3.org/2000/svg">
 
-        <polyline points="60,60  70,60  65,15" fill="#ba5edd"/>
+        <polyline points="60,60  70,60  65,18" fill="#ba5edd"/>
         <polyline points="60,70  70,70  65,110" fill="white"/>
         <circle cx="65" cy="65" r="7" stroke="#ba5edd" stroke-width="7" fill="none" />
 
@@ -75,7 +69,7 @@
 
     <div class='position row'>
       <div class='column-33'>
-        <div class='label'>HDG</div>
+        <div class='label'>CONFIDENCE</div>
         <div id='position-hng'>n/a</div>
       </div
       ><div class='column-33'>
@@ -135,12 +129,40 @@
 
       ><button id="btn-map" class="btn options__btn column-33" type="button">
 
+          <svg alt="map" class="btn__icon btn__icon--inactive" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+							<path fill="white" d="M19.305,9.61c-0.235-0.235-0.615-0.235-0.85,0l-1.339,1.339c0.045-0.311,0.073-0.626,0.073-0.949
+								c0-3.812-3.09-6.901-6.901-6.901c-2.213,0-4.177,1.045-5.44,2.664l0.897,0.719c1.053-1.356,2.693-2.232,4.543-2.232
+								c3.176,0,5.751,2.574,5.751,5.751c0,0.342-0.037,0.675-0.095,1l-1.746-1.39c-0.234-0.235-0.614-0.235-0.849,0
+								c-0.235,0.235-0.235,0.615,0,0.85l2.823,2.25c0.122,0.121,0.282,0.177,0.441,0.172c0.159,0.005,0.32-0.051,0.44-0.172l2.25-2.25
+								C19.539,10.225,19.539,9.845,19.305,9.61z M10.288,15.752c-3.177,0-5.751-2.575-5.751-5.752c0-0.276,0.025-0.547,0.062-0.813
+								l1.203,1.203c0.235,0.234,0.615,0.234,0.85,0c0.234-0.235,0.234-0.615,0-0.85l-2.25-2.25C4.281,7.169,4.121,7.114,3.961,7.118
+								C3.802,7.114,3.642,7.169,3.52,7.291l-2.824,2.25c-0.234,0.235-0.234,0.615,0,0.85c0.235,0.234,0.615,0.234,0.85,0l1.957-1.559
+								C3.435,9.212,3.386,9.6,3.386,10c0,3.812,3.09,6.901,6.902,6.901c2.083,0,3.946-0.927,5.212-2.387l-0.898-0.719
+								C13.547,14.992,12.008,15.752,10.288,15.752z"></path>
+						</svg>
+
+            <!--
+            <svg class="svg-icon reload" viewBox="0 0 20 20">
+							<path fill="none" d="M19.305,9.61c-0.235-0.235-0.615-0.235-0.85,0l-1.339,1.339c0.045-0.311,0.073-0.626,0.073-0.949
+								c0-3.812-3.09-6.901-6.901-6.901c-2.213,0-4.177,1.045-5.44,2.664l0.897,0.719c1.053-1.356,2.693-2.232,4.543-2.232
+								c3.176,0,5.751,2.574,5.751,5.751c0,0.342-0.037,0.675-0.095,1l-1.746-1.39c-0.234-0.235-0.614-0.235-0.849,0
+								c-0.235,0.235-0.235,0.615,0,0.85l2.823,2.25c0.122,0.121,0.282,0.177,0.441,0.172c0.159,0.005,0.32-0.051,0.44-0.172l2.25-2.25
+								C19.539,10.225,19.539,9.845,19.305,9.61z M10.288,15.752c-3.177,0-5.751-2.575-5.751-5.752c0-0.276,0.025-0.547,0.062-0.813
+								l1.203,1.203c0.235,0.234,0.615,0.234,0.85,0c0.234-0.235,0.234-0.615,0-0.85l-2.25-2.25C4.281,7.169,4.121,7.114,3.961,7.118
+								C3.802,7.114,3.642,7.169,3.52,7.291l-2.824,2.25c-0.234,0.235-0.234,0.615,0,0.85c0.235,0.234,0.615,0.234,0.85,0l1.957-1.559
+								C3.435,9.212,3.386,9.6,3.386,10c0,3.812,3.09,6.901,6.902,6.901c2.083,0,3.946-0.927,5.212-2.387l-0.898-0.719
+								C13.547,14.992,12.008,15.752,10.288,15.752z"></path>
+						</svg>
+
+
         <svg alt="map" class="btn__icon btn__icon--inactive" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
            width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
           <path id="location-icon" d="M256,50c-72.072,0-130.5,58.427-130.5,130.5c0,72.073,57.114,155.833,130.5,281.5
           c73.388-125.666,130.5-209.427,130.5-281.5C386.5,108.427,328.074,50,256,50z M256,224.133c-25.848,0-46.801-20.953-46.801-46.8
           s20.953-46.8,46.801-46.8s46.801,20.953,46.801,46.8S281.848,224.133,256,224.133z" fill="white" />
         </svg>
+      -->
 
       </button
 
@@ -172,10 +194,13 @@
       <div id="popup-contents" class="popup__contents">
         <div id="popup-inner-info" class="popup__inner popup__inner--hide">
           <p>
-          For best results calibrate the accelerometer in your device by tracing out a figure of 8 in the air several times vertically and horizontally. The heading can also be affected by nearby magnetic fields.
+            use this purple-needled moral compass to guide you, in case i'm like, on a plane or something.
           </p>
           <p>
-          For more information, bugs or comments please visit <a href='https://github.com/lamplightdev/compass'>the repo on github</a>.
+            happy birthday from your purple-haired moral compass, blakey boy.
+          </p>
+          <p>
+            &lt;3, alex
           </p>
         </div>
 

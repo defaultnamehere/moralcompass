@@ -147,9 +147,65 @@
         }
     }
 
-    const dirs = ["communicate\nur feelings", "it's okay\nto want things", "a long one, but like\ni mean a really long one,\nlonger than u expect", "forbidden one we\ndon't talk about", "it's okay, they\nprobably have a\nlot going on"]
+    const good = [
+      "communicate\nur feelings", 
+    "it's okay\nto want things", 
+    "it's okay, they\nprobably have a\nlot going on",
+    "seek first to understand",
+    "accepr ur feelings",
+    "they're okay\nif they're not\nhurting anyone",
+    "it's okay\nif you aren't\nhurting anyone",
+    "they act like\nthat because\nthey're in pain",
+    "gee maybe\ntry therapy",
+    "resolve problems\nnow before they\nget bigger",
+    "people make mistakes,\n doesn't mean\nthey're evil",
+    "you can't be responsible\n for other people's feelings"
+  ]
 
-    const moralNorth = getRandomInt(dirs.length);
+    const bad = [
+      "force someone to be\nyour moral compass",
+      "what have they\ndone for you\nlately",
+      "who cares?",
+      "boys will\nbe boys",
+      "gotta be a\njerk to be\nrich",
+      "make someone\nfeel bad so\nyou feel good",
+      "gossip behind\ntheir backs",
+      "blame the\ngovernment",
+      "the grapes\nare sour\nanyway",
+      "every man\nfor himself",
+      "it's a meritocracy",
+      "your manager\nis a jerk",
+      "maybe beat\nyourself up\babout it",
+      "it's them\nor us",
+      "nah",
+      "reward yourself\n by upvoting",
+      "derive it\nfrom first\nprinciples",
+      "\"be normal\"",
+      "let it slide,\nhe's rich",
+      "you worked\nhard so\nyou deserve it",
+      "there's not\nmuch maths\n in IT",
+      "therapy is for\n dumb people",
+      "just suck it up",
+      "stiff upper lip",
+      "the money will\ntrickle down",
+      "the sharing economy",
+      "they're not like\nyou, so they're a threat",
+      "oh just\ntell them later",
+      "hide your problems",
+      "ignore your feelings",
+      "the important thing\nis to be right"
+    ]
+
+    const numDirs = 4 + getRandomInt(3)
+    const moralNorth = getRandomInt(numDirs);
+    var dirs = []
+   for (var i = 0;i < numDirs; i++) {
+      dirs.push(randomChoice(bad));
+    }
+    // Replace one bad one with ~moral north~
+    dirs[moralNorth] = randomChoice(good)
+    console.log(dirs);
+
     // I can't believe we're out here doing university mathematics unironically.
     var spacing_angle = 2*Math.PI / dirs.length;
     const spacingAngleDegrees = 360 / dirs.length;
@@ -201,15 +257,15 @@
 
     function getHeadingGoof(h) {
         if (h < 90) {
-            return "a"
+            return "disregard"
         }
         if (h < 180) {
-            return "b"
+            return "shaky"
         }
         if (h < 270) {
-            return "c"
+            return "savoury"
         }
-        return "d"
+        return "makes u think"
 
     }
 
@@ -271,15 +327,16 @@
             const northWindow = 20;
             const moralNorthOffset = moralNorth * spacingAngleDegrees;
 
+            const boing = document.getElementById("boing")
             const offsetHeading = (positionCurrent.hng + moralNorthOffset) % 360
             // Draw moral north, if it's north
             if (offsetHeading < northWindow || offsetHeading > 360 - northWindow) {
                 document.getElementById("moralNorth").setAttribute("fill", "#ba5edd");
-                document.getElementById("boing").style.visibility = "visible";
+                boing.classList.add("fadein")
 
             } else {
                 document.getElementById("moralNorth").setAttribute("fill", "white");
-                document.getElementById("boing").style.visibility = "hidden";
+                boing.classList.add("remove")
             }
 
 
@@ -419,9 +476,6 @@
         setNightmode(!isNightMode);
     }
 
-    function openMap() {
-        window.open("https://www.google.com/maps/place/@" + positionCurrent.lat + "," + positionCurrent.lng + ",16z", "_blank");
-    }
 
     function popupOpenFromClick(event) {
         popupOpen(event.currentTarget.dataset.name);
@@ -468,7 +522,13 @@
     function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
     }
+    function randomChoice(arr){
+      return arr[getRandomInt(arr.length)]
+    }
 
+   function reload() {
+     location.reload();
+    }
 
     drawDirections()
     if (screen.width > screen.height) {
@@ -489,7 +549,7 @@
 
     btnLockOrientation.addEventListener("click", toggleOrientationLock);
     btnNightmode.addEventListener("click", toggleNightmode);
-    btnMap.addEventListener("click", openMap);
+    btnMap.addEventListener("click", reload);
 
     var i;
     for (i=0; i<btnsPopup.length; i++) {
@@ -505,11 +565,6 @@
         timeout: 27000
     });
 
-    var i = 0;
-    window.setInterval(() => {
-        onHeadingChange({alpha:i % 360});
-        i+= 10;
-    }, 100)
 
     setNightmode(false);
     checkLockable();
