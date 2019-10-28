@@ -344,7 +344,7 @@
             // device can't show heading
 
             positionHng.textContent = "n/a";
-            //showHeadingWarning();
+            showHeadingWarning();
         }
     }
 
