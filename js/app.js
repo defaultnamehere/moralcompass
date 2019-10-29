@@ -540,7 +540,7 @@
     debugOrientationDefault.textContent = defaultOrientation;
   }
 
-  done = false;
+  var done = false;
   function iosIsGood() {
     if (done) {
       return;
