@@ -540,17 +540,12 @@
     debugOrientationDefault.textContent = defaultOrientation;
   }
 
-  if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-    // iOS 13+
     DeviceOrientationEvent.requestPermission()
       .then(response => {
         if (response == 'granted') {
           window.addEventListener('deviceorientation', onHeadingChange)
         }
       }).catch(console.error)
-  } else {
-    window.addEventListener('deviceorientation', onHeadingChange)
-  }
 
   document.addEventListener("fullscreenchange", onFullscreenChange);
   document.addEventListener("webkitfullscreenchange", onFullscreenChange);
