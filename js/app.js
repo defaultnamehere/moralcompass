@@ -540,12 +540,26 @@
     debugOrientationDefault.textContent = defaultOrientation;
   }
 
+  done = false;
+  function iosIsGood() {
+    if (done) {
+      return;
+    }
+    // iOS 13+
     DeviceOrientationEvent.requestPermission()
       .then(response => {
         if (response == 'granted') {
           window.addEventListener('deviceorientation', onHeadingChange)
         }
       }).catch(console.error)
+    done = true;
+  }
+  if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+    document.querySelector("div.compass").addEventListener("click", iosIsGood)
+  } else {
+    window.addEventListener('deviceorientation', onHeadingChange)
+  }
+
 
   document.addEventListener("fullscreenchange", onFullscreenChange);
   document.addEventListener("webkitfullscreenchange", onFullscreenChange);
