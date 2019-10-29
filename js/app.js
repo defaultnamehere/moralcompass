@@ -540,7 +540,7 @@
     debugOrientationDefault.textContent = defaultOrientation;
   }
 
-  if (DeviceMotionEvent && typeof DeviceMotionEvent.requestPermission === 'function') {
+  if (typeof DeviceOrientationEvent.requestPermission === 'function') {
     // iOS 13+
     DeviceOrientationEvent.requestPermission()
       .then(response => {
